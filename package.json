@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "lint": "eslint src --ext .ts,.tsx",
-    "format": "prettier --write src"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
