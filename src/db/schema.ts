@@ -23,3 +23,4 @@ export const subscriptions = sqliteTable('subscriptions', {
     .default(sql`(current_timestamp)`),
 });
 export type Subscription = typeof subscriptions.$inferSelect;
+export type NewSubscription = typeof subscriptions.$inferInsert;
