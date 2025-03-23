@@ -1,5 +1,6 @@
 'use client';
 
+import { deleteSubscription, toggleSubscriptionStatus } from '@/db/queries';
 import { Subscription } from '@/db/schema';
 import { Edit, Trash2 } from 'lucide-react';
 import { useState } from 'react';
@@ -29,14 +30,14 @@ export function SubscriptionList({
   const handleToggleStatus = async (id: string) => {
     setIsLoading((prev) => ({ ...prev, [id]: true }));
     try {
-      // const updatedSubscription = await toggleSubscriptionStatus(id);
-      // if (updatedSubscription) {
-      //   setSubscriptions(
-      //     subscriptions.map((sub) =>
-      //       sub.id === id ? { ...sub, isActive: !sub.isActive } : sub,
-      //     ),
-      //   );
-      // }
+      const updatedSubscription = await toggleSubscriptionStatus(id);
+      if (updatedSubscription) {
+        setSubscriptions(
+          subscriptions.map((sub) =>
+            sub.id === id ? { ...sub, isActive: !sub.isActive } : sub,
+          ),
+        );
+      }
     } catch (error) {
       console.error('Error toggling subscription status:', error);
       alert('Failed to update subscription status');
@@ -49,7 +50,7 @@ export function SubscriptionList({
     if (confirm('Are you sure you want to delete this subscription?')) {
       setIsLoading((prev) => ({ ...prev, [id]: true }));
       try {
-        // await deleteSubscription(id);
+        await deleteSubscription(id);
         setSubscriptions(subscriptions.filter((sub) => sub.id !== id));
       } catch (error) {
         console.error('Error deleting subscription:', error);

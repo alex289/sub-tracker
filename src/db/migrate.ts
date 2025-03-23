@@ -1,7 +1,7 @@
 import * as path from '@tauri-apps/api/path';
-import { resourceDir } from '@tauri-apps/api/path';
+import { BaseDirectory } from '@tauri-apps/api/path';
 import { readDir, readTextFile } from '@tauri-apps/plugin-fs';
-import { sqlite } from './database';
+import { getSqlite } from './database';
 
 export type ProxyMigrator = (migrationQueries: string[]) => Promise<void>;
 
@@ -12,8 +12,9 @@ export type ProxyMigrator = (migrationQueries: string[]) => Promise<void>;
  * @returns A promise that resolves when the migrations are complete.
  */
 export async function migrate() {
-  const resourcePath = await resourceDir();
-  const files = await readDir(`${resourcePath}/migrations`);
+  const files = await readDir('migrations', {
+    baseDir: BaseDirectory.Resource,
+  });
   let migrations = files.filter((file) => file.name?.endsWith('.sql'));
 
   // sort migrations by the first 4 characters of the file name
@@ -36,6 +37,8 @@ export async function migrate() {
 		)
 	`;
 
+  const sqlite = await getSqlite();
+
   await sqlite.execute(migrationTableCreate, []);
 
   for (const migration of migrations) {
@@ -52,7 +55,8 @@ export async function migrate() {
 
     if (hash && hasBeenRun(hash) === undefined) {
       const sql = await readTextFile(
-        await path.join(`${resourcePath}/migrations`, migration.name),
+        await path.join('migrations', migration.name),
+        { baseDir: BaseDirectory.Resource },
       );
 
       sqlite.execute(sql, []);

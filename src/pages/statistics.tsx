@@ -1,5 +1,6 @@
 'use client';
 
+import { getActiveSubscriptions } from '@/db/queries';
 import { Subscription } from '@/db/schema';
 import { useEffect, useState } from 'react';
 import { StatisticsDisplay } from '../components/statistics-display';
@@ -12,26 +13,8 @@ export function StatisticsPage() {
   useEffect(() => {
     async function loadSubscriptions() {
       try {
-        // const data = await getActiveSubscriptions();
-        const data = [
-          {
-            id: '1',
-            name: 'Test Subscription',
-            price: 10,
-            currency: 'USD',
-            paymentMethod: 'Credit Card',
-            category: 'Entertainment',
-            notes: 'Test notes',
-            paymentFrequency: 'monthly',
-            paymentDay: 1,
-            isActive: true,
-            createdAt: '2023-01-01T00:00:00.000Z',
-            updatedAt: '2023-01-01T00:00:00.000Z',
-            paymentMonth: 1,
-            paymentYear: 2023,
-            paymentWeek: 1,
-          },
-        ];
+        const data = await getActiveSubscriptions();
+
         setSubscriptions(data);
       } catch (err) {
         console.error('Error fetching active subscriptions:', err);

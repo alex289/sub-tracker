@@ -1,5 +1,6 @@
 'use client';
 
+import { createSubscription, updateSubscription } from '@/db/queries';
 import { Subscription } from '@/db/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
@@ -88,13 +89,13 @@ export function SubscriptionForm({ subscription }: SubscriptionFormProps) {
 
   const paymentFrequency = form.watch('paymentFrequency');
 
-  async function onSubmit(_values: FormValues) {
+  async function onSubmit(values: FormValues) {
     setIsSubmitting(true);
     try {
       if (subscription) {
-        // await updateSubscription(subscription.id, values);
+        await updateSubscription(subscription.id, values);
       } else {
-        // await createSubscription(values);
+        await createSubscription(values);
       }
       navigate('/');
     } catch (error) {

@@ -2,10 +2,13 @@ import Database from '@tauri-apps/plugin-sql';
 import { drizzle } from 'drizzle-orm/sqlite-proxy';
 import * as schema from './schema';
 
-export const sqlite = await Database.load('sqlite:sub-tracker.db');
+export const getSqlite = async () =>
+  await Database.load('sqlite:sub-tracker.db');
 
 export const db = drizzle<typeof schema>(
   async (sql, params, method) => {
+    const sqlite = await getSqlite();
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let rows: any = [];
     let results = [];

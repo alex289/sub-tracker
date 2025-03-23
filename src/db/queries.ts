@@ -26,12 +26,24 @@ export async function getSubscriptionById(id: string) {
 }
 
 export async function createSubscription(
-  data: NewSubscription,
+  data: Partial<NewSubscription>,
 ): Promise<NewSubscription> {
   const now = new Date().toISOString();
 
   const newSubscription: NewSubscription = {
     ...data,
+    name: data.name || '',
+    price: data.price || 0,
+    currency: data.currency || 'USD',
+    paymentMethod: data.paymentMethod || '',
+    category: data.category || '',
+    notes: data.notes || '',
+    paymentDay: data.paymentDay || 1,
+    paymentMonth: data.paymentMonth || 1,
+    paymentYear: data.paymentYear || 2023,
+    paymentWeek: data.paymentWeek || 1,
+    paymentFrequency: data.paymentFrequency || 'monthly',
+    isActive: data.isActive || true,
     id: uuidv4(),
     createdAt: now,
     updatedAt: now,
@@ -60,7 +72,6 @@ export async function createSubscription(
   return newSubscription;
 }
 
-// Update a subscription
 export async function updateSubscription(
   id: string,
   data: Partial<NewSubscription>,
