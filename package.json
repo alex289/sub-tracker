@@ -10,8 +10,8 @@
     "tauri": "tauri",
     "lint": "eslint src --ext .ts,.tsx",
     "format": "prettier --write .",
-    "migrations:generate": "drizzle-kit generate",
-    "migrations:migrate": "drizzle-kit migrate"
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
@@ -57,6 +57,5 @@
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.26.1",
     "vite": "^6.2.2"
-  },
-  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
+  }
 }
