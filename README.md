@@ -1,7 +1,36 @@
-# Tauri + React + Typescript
+# Sub Tracker
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+Simple and _local_ first subscription tracker.
 
-## Recommended IDE Setup
+## Development
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+### Setup
+
+> Requires Node.js 22.x, pnpm 9.x and Cargo 1.83.x
+
+```sh
+pnpm install
+
+cd src-tauri
+cargo install
+```
+
+### Run
+
+```sh
+pnpm tauri dev
+```
+
+### Build
+
+```sh
+pnpm tauri build
+```
+
+### TODO
+
+- Own images and icons
+- Fix statistics
+- Improve UI
+- Add calendar
+- Add about page
