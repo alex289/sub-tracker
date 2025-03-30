@@ -1,3 +1,5 @@
+<img src="https://repository-images.githubusercontent.com/949196572/74b373e2-5bbf-40eb-8215-d731529bcdf5" />
+
 # Sub Tracker
 
 Simple and _local_ first subscription tracker.
@@ -29,7 +31,7 @@ pnpm tauri build
 
 ### TODO
 
-- Own images and icons
+- Own icons
 - Fix statistics
 - Improve UI
 - Add calendar
