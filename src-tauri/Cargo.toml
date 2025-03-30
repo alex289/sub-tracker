@@ -1,6 +1,6 @@
 [package]
 name = "sub-tracker"
-version = "0.1.0"
+version = "0.2.0"
 description = "Simple and local first subscription tracker"
 authors = ["Alexander Konietzko"]
 edition = "2021"
