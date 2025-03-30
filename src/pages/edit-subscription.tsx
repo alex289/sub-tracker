@@ -1,5 +1,3 @@
-'use client';
-
 import { getSubscriptionById } from '@/db/queries';
 import { Subscription } from '@/db/schema';
 import { useEffect, useState } from 'react';

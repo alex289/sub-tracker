@@ -1,5 +1,3 @@
-'use client';
-
 import { getSubscriptions } from '@/db/queries';
 import { Subscription } from '@/db/schema';
 import { PlusCircle } from 'lucide-react';

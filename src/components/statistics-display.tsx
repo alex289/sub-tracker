@@ -1,5 +1,3 @@
-'use client';
-
 import { Subscription } from '@/db/schema';
 import { useState } from 'react';
 import {

@@ -1,5 +1,3 @@
-'use client';
-
 import { deleteSubscription, toggleSubscriptionStatus } from '@/db/queries';
 import { Subscription } from '@/db/schema';
 import { Edit, Trash2 } from 'lucide-react';

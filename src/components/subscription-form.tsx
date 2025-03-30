@@ -1,5 +1,3 @@
-'use client';
-
 import { createSubscription, updateSubscription } from '@/db/queries';
 import { Subscription } from '@/db/schema';
 import { zodResolver } from '@hookform/resolvers/zod';

@@ -1,5 +1,3 @@
-'use client';
-
 import { Heart, Info, Shield } from 'lucide-react';
 import { useState } from 'react';
 
