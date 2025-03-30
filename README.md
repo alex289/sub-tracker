@@ -35,4 +35,3 @@ pnpm tauri build
 - Fix statistics
 - Improve UI
 - Add calendar
-- Add about page

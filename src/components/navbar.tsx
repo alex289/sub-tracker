@@ -1,6 +1,7 @@
 import { BarChart3, CreditCard } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/utils';
+import AboutDialog from './about-dialog';
 import { ModeToggle } from './mode-toggle';
 
 export function Navbar() {
@@ -47,6 +48,7 @@ export function Navbar() {
         </nav>
         <div className="ml-auto flex items-center space-x-4">
           <ModeToggle />
+          <AboutDialog />
         </div>
       </div>
     </header>
